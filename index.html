@@ -25,11 +25,10 @@ body {
   margin: 0; min-height: 100vh;
   display: flex; flex-direction: column;
   background-color: #1a1a1c;
-  /* إعادة صورة الخلفية الأصلية هنا */
-  background-image: url('1000005893.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+  /* الخلفية تتكرر بشكل أفقي وعمودي */
+  background-image: url('background.png');
+  background-repeat: repeat;
+  background-position: top left;
   background-attachment: fixed;
   font-family: 'Inter', sans-serif; color: var(--text);
   overflow-x: hidden;
@@ -54,12 +53,12 @@ body {
 
 .card {
   position: relative; width: 100%; max-width: 440px;
-  background: rgba(8, 8, 9, 0.65);
+  background: rgba(8, 8, 9, 0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--card-border);
   border-radius: 14px; padding: 22px 26px 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   z-index: 2;
 }
 .eyebrow {
