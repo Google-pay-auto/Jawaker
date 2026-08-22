@@ -25,7 +25,7 @@ body {
   position: relative;
   margin: 0; min-height: 100vh;
   display: flex; flex-direction: column;
-  background-color: #0d0d0e; /* لون أسود غامق ليتطابق مع الصورة */
+  background-color: #0a0a0b; /* لون خلفية أغمق ليتناسب مع الشفافية */
   font-family: 'Inter', sans-serif; color: var(--text);
   overflow-x: hidden;
 }
@@ -36,9 +36,9 @@ body::before {
   top: 0; right: 0; bottom: 0; left: 0;
   background-image: url('1000005893.png');
   background-repeat: repeat;
-  background-size: 80px 80px; /* تصغير حجم النقشة لتتكرر أكثر */
+  background-size: 45px 45px; /* تم تصغير الحجم ليتطابق مع الصورة */
   background-position: top left;
-  opacity: 0.35; /* جعل النقشة خفيفة وغامقة */
+  opacity: 0.15; /* شفافية أخف بكثير */
   z-index: 0;
   pointer-events: none;
 }
@@ -62,12 +62,12 @@ body::before {
 
 .card {
   position: relative; width: 100%; max-width: 440px;
-  background: rgba(8, 8, 9, 0.65);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(12, 12, 14, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--card-border);
   border-radius: 14px; padding: 22px 26px 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   z-index: 2;
 }
 .eyebrow {
@@ -87,7 +87,7 @@ body::before {
 .field-group input:focus { border-color: var(--gold); }
 .field-group input.input-error {
   border: 2px solid var(--red) !important;
-  box-shadow: 0 0 8px rgba(255, 51, 51, 0.7) !important;
+  box-shadow: 0 0 10px rgba(255, 51, 51, 0.6) !important; /* ظل أقوى للخطأ */
   background: #fff5f5 !important;
 }
 
